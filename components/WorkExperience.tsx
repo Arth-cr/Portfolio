@@ -23,7 +23,9 @@ function WorkExperience({ experiences }: Props) {
     >
       <div className="w-full flex space-x-5 overflow-x-scroll px-10 pb-4 snap-x snap-mandatory scrollbar-track-gray-400/20 scrollbar-thumb-my-green/80 scrollbar-thin ">
         {experiences.map((experience) => {
-          return <ExperienceCard key={experience._id} experience={experience} />
+          return (
+            <ExperienceCard key={experience?._id} experience={experience} />
+          )
         })}
       </div>
     </motion.div>

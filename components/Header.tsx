@@ -28,11 +28,11 @@ function Header({ socials }: Props) {
         }}
         className="flex flex-row items-center"
       >
-        {socials.map((social) => {
+        {socials?.map((social) => {
           return (
             <SocialIcon
-              key={social._id}
-              url={social.url}
+              key={social?._id}
+              url={social?.url}
               fgColor="#70e000"
               bgColor="transparent"
               className="hover:opacity-50 transition-opacity duration-200"

@@ -29,11 +29,11 @@ function Skills({ skills }: Props) {
       </h3>
 
       <div className="max-w-md grid grid-cols-4 gap-5">
-        {skills.slice(0, skills.length / 2).map((skill) => {
-          return <Skill skill={skill} key={skill._id} />
+        {skills?.slice(0, skills.length / 2).map((skill) => {
+          return <Skill skill={skill} key={skill?._id} />
         })}
-        {skills.slice(skills.length / 2, skills.length).map((skill) => {
-          return <Skill skill={skill} key={skill._id} directionleft />
+        {skills?.slice(skills.length / 2, skills.length).map((skill) => {
+          return <Skill skill={skill} key={skill?._id} directionleft />
         })}
       </div>
     </motion.div>

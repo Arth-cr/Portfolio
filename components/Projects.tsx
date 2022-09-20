@@ -26,10 +26,10 @@ const Projects = ({ projects }: Props) => {
       </h3>
 
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-track-gray-400/20 scrollbar-thumb-my-green/80 scrollbar-thin">
-        {projects.map((project, i) => {
+        {projects?.map((project, i) => {
           return (
             <div
-              key={project._id}
+              key={project?._id}
               className="w-full flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen"
             >
               <motion.img
@@ -45,7 +45,7 @@ const Projects = ({ projects }: Props) => {
                   duration: 1.2,
                 }}
                 viewport={{ once: true }}
-                src={urlFor(project.image).url()}
+                src={urlFor(project?.image).url()}
                 alt=""
                 className="w-full h-[25%] md:w-[50%] md:h-[60%]  object-cover"
               />
@@ -53,19 +53,19 @@ const Projects = ({ projects }: Props) => {
               <div className="space-y-10 px-0 md:px-10 max-w-6xl">
                 <h4 className="text-4xl font-semibold text-center">
                   <span className="underline decoration-my-green/50">
-                    Projeto {i + 1} de {projects.length}:
+                    Projeto {i + 1} de {projects?.length}:
                   </span>{" "}
                   {project?.title}
                 </h4>
 
                 <div className="flex items-center space-x-2 justify-center">
-                  {project.technologies.map((technologie) => {
+                  {project?.technologies?.map((technologie) => {
                     return (
                       <img
                         className="h-10 w-10 rounded-full object-contain"
-                        src={urlFor(technologie.image).url()}
-                        alt={technologie.title}
-                        key={technologie._id}
+                        src={urlFor(technologie?.image).url()}
+                        alt={technologie?.title}
+                        key={technologie?._id}
                       />
                     )
                   })}
