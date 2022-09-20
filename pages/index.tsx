@@ -42,7 +42,7 @@ const Home = ({ experiences, pageInfo, projects, skills, socials }: Props) => {
       <section id="about" className="h-screen snap-start">
         <div className="flex items-center justify-center">
           <h3 className="relative top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
-            About
+            Sobre
           </h3>
         </div>
         <About pageInfo={pageInfo} />
@@ -53,7 +53,7 @@ const Home = ({ experiences, pageInfo, projects, skills, socials }: Props) => {
       <section id="experience" className="h-screen snap-start">
         <div className="flex items-center justify-center">
           <h3 className="relative top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
-            Experience
+            Experiência
           </h3>
         </div>
         <WorkExperience experiences={experiences} />
