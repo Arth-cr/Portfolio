@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         "my-green": "#70e000",
       },
+      screens: { tall: { raw: "(max-height: 670px)" } },
     },
   },
   plugins: [require("tailwind-scrollbar")],

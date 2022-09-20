@@ -28,7 +28,7 @@ function Skills({ skills }: Props) {
         Passe o mouse para ver meu nível de conhecimento de cada habilidade :)
       </h3>
 
-      <div className="max-w-md grid grid-cols-4 gap-5">
+      <div className="max-w-md grid grid-cols-4 gap-5 tall:-mb-36">
         {skills?.slice(0, skills.length / 2).map((skill) => {
           return <Skill skill={skill} key={skill?._id} />
         })}
