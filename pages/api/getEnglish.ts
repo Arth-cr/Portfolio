@@ -13,13 +13,13 @@ const query = groq`
 `
 
 type Data = {
-  en: English
+  english: English
 }
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const en: English = await sanityClient.fetch(query)
-  res.status(200).json({ en })
+  const english: English = await sanityClient.fetch(query)
+  res.status(200).json({ english })
 }
