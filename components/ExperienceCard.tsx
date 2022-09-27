@@ -54,7 +54,7 @@ const ExperienceCard = ({ experience, language }: Props) => {
 
         <ul className="list-disc list-inside space-y-4 ml-5 text-lg overflow-y-scroll overflow-x-visible h-[190px] xl:h-[90px] min-w-min scrollbar-track-gray-400/20 scrollbar-thumb-[#333333]/80 scrollbar-thin">
           {experience.points.map((point) => {
-            return <li key={point}>{point}</li>
+            return <li key={Math.random()}>{point}</li>
           })}
         </ul>
       </div>

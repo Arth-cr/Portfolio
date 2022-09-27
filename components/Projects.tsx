@@ -79,7 +79,7 @@ const Projects = ({ projects, languages }: Props) => {
                         className="h-10 w-10 rounded-full object-contain"
                         src={urlFor(technologie?.image).url()}
                         alt={technologie?.title}
-                        key={technologie?._id}
+                        key={Math.random()}
                       />
                     )
                   })}

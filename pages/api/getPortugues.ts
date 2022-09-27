@@ -7,8 +7,8 @@ const query = groq`
     *[_type == "pt"][0] {
       ...,
       experiences[] -> {..., technologies[] ->},
-      pageInfos->,
-      projects[]-> {..., technologies[] ->}
+      pageInfos ->,
+      projects[] -> {..., technologies[] ->}
     }
 `
 

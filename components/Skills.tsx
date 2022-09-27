@@ -35,10 +35,10 @@ function Skills({ skills, language }: Props) {
 
       <div className="max-w-md grid grid-cols-4 gap-5">
         {skills?.slice(0, skills.length / 2).map((skill) => {
-          return <Skill skill={skill} key={skill?._id} />
+          return <Skill skill={skill} key={Math.random()} />
         })}
         {skills?.slice(skills.length / 2, skills.length).map((skill) => {
-          return <Skill skill={skill} key={skill?._id} directionleft />
+          return <Skill skill={skill} key={Math.random()} directionleft />
         })}
       </div>
     </motion.div>
