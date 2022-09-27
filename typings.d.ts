@@ -13,6 +13,22 @@ interface Image {
   }
 }
 
+export interface English extends SanityBody {
+  _type: "en"
+  title: string
+  experiences: Experience[]
+  pageInfos: PageInfo
+  projects: Project[]
+}
+
+export interface Portugues extends SanityBody {
+  _type: "pt"
+  title: string
+  experiences: Experience[]
+  pageInfos: PageInfo
+  projects: Project[]
+}
+
 export interface PageInfo extends SanityBody {
   _type: "pageInfo"
   address: string

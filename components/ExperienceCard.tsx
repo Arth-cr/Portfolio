@@ -5,11 +5,13 @@ import { urlFor } from "./../sanity"
 
 type Props = {
   experience: Experience
+  language
 }
 
-const ExperienceCard = ({ experience }: Props) => {
+const ExperienceCard = ({ experience, language }: Props) => {
+  console.log({ experience }, "asoeijaoisej")
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shkink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-y-scroll overflow-x-visible h-[80vh] xl:h-[80%] min-w-min scrollbar-track-gray-400/20 scrollbar-thumb-[#333333]/80 scrollbar-thin">
+    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shkink-0 min-w-[350px] md:min-w-[500px] xl:min-w-[700px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200">
       <motion.img
         initial={{
           y: -100,
@@ -38,13 +40,20 @@ const ExperienceCard = ({ experience }: Props) => {
           })}
         </div>
         <p className="uppercase py-5 text-gray-300">
-          {new Date(experience.dateStarted).toLocaleDateString("pt-br")} -{" "}
+          {language
+            ? new Date(experience.dateStarted).toLocaleDateString("en-us")
+            : new Date(experience.dateStarted).toLocaleDateString("pt-br")}{" "}
+          -{" "}
           {experience.isCurrentlyWorkingHere
-            ? "Atualmente"
-            : new Date(experience.dateEnded).toLocaleDateString("pt-br")}
+            ? `${language ? "Currently" : "Atualmente"}`
+            : `${
+                language
+                  ? new Date(experience.dateEnded).toLocaleDateString("en-us")
+                  : new Date(experience.dateEnded).toLocaleDateString("pt-br")
+              }`}
         </p>
 
-        <ul className="list-disc list-inside space-y-4 ml-5 text-lg">
+        <ul className="list-disc list-inside space-y-4 ml-5 text-lg overflow-y-scroll overflow-x-visible h-[190px] xl:h-[90px] min-w-min scrollbar-track-gray-400/20 scrollbar-thumb-[#333333]/80 scrollbar-thin">
           {experience.points.map((point) => {
             return <li key={point}>{point}</li>
           })}

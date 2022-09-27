@@ -5,9 +5,10 @@ import { Skill as SkillType } from "../typings"
 
 type Props = {
   skills: SkillType[]
+  language: boolean
 }
 
-function Skills({ skills }: Props) {
+function Skills({ skills, language }: Props) {
   return (
     <motion.div
       initial={{
@@ -19,16 +20,20 @@ function Skills({ skills }: Props) {
       transition={{
         duration: 1.5,
       }}
-      className="flex flex-col relative text-center md:text-left xl:flex-row max-w-[2000px] xl:px-10 justify-center xl:space-y-0 mx-auto items-center h-[100%]"
+      className="flex flex-col relative text-center md:text-left max-w-[2000px] xl:px-10 justify-center xl:space-y-0 mx-auto items-center h-[100%] gap-y-16"
     >
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
-        Habilidades
-      </h3>
-      <h3 className="absolute top-36 uppercase tracking-[3px] text-gray-500 tsxt-sm">
-        Passe o mouse para ver meu nível de conhecimento de cada habilidade :)
-      </h3>
+      <div className="flex flex-col items-center justify-center mt-16">
+        <h3 className="uppercase tracking-[20px] text-gray-500 text-2xl">
+          {language ? "Skills" : "Habilidades"}
+        </h3>
+        <h3 className="uppercase tracking-[3px] text-gray-500 tsxt-sm">
+          {language
+            ? "Mouse hover to see my skill level :)"
+            : "Passe o mouse para ver meu nível de conhecimento de cada habilidade :)"}
+        </h3>
+      </div>
 
-      <div className="max-w-md grid grid-cols-4 gap-5 tall:-mb-36">
+      <div className="max-w-md grid grid-cols-4 gap-5">
         {skills?.slice(0, skills.length / 2).map((skill) => {
           return <Skill skill={skill} key={skill?._id} />
         })}

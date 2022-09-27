@@ -10,3 +10,19 @@
     @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-my-green/40 focus:text-my-green/40 w-full;
   }
 }
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+}
+
+input:checked ~ .dot::after {
+  content: "pt";
+  top: -1px;
+  position: relative;
+}
+
+input ~ .dot::after {
+  content: "en";
+  top: -1px;
+  position: relative;
+}

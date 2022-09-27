@@ -7,14 +7,19 @@ import { urlFor } from "./../sanity"
 
 type Props = {
   pageInfo?: PageInfo
+  language: boolean
 }
 
-function Hero({ pageInfo }: Props) {
+function Hero({ pageInfo, language }: Props) {
   const [text, count] = useTypewriter({
     words: [
-      `Olá, me chamo ${pageInfo?.name}`,
-      "Seja-bem-vindo.tsx",
-      "<EsperoQueGoste />",
+      `${
+        language
+          ? `Hello, I'm ${pageInfo?.name}`
+          : `Olá, me chamo ${pageInfo?.name}`
+      }`,
+      `${language ? `Be-Welcome.tsx` : `Seja-bem-vindo.tsx`}`,
+      `${language ? `<HopeYouLike />` : `<EsperoQueGoste />`}`,
     ],
     loop: true,
     delaySpeed: 2000,
@@ -37,16 +42,24 @@ function Hero({ pageInfo }: Props) {
 
         <div className="pt-5">
           <Link href="#about">
-            <button className="heroButton">Sobre</button>
+            <button className="heroButton">
+              {language ? "About" : "Sobre"}
+            </button>
           </Link>
           <Link href="#experience">
-            <button className="heroButton">Experiência</button>
+            <button className="heroButton">
+              {language ? "Experience" : "Experiência"}
+            </button>
           </Link>
           <Link href="#skills">
-            <button className="heroButton">Habilidades</button>
+            <button className="heroButton">
+              {language ? "Skills" : "Habilidades"}
+            </button>
           </Link>
           <Link href="#projects">
-            <button className="heroButton">Projetos</button>
+            <button className="heroButton">
+              {language ? "Projects" : "Projetos"}
+            </button>
           </Link>
         </div>
       </div>

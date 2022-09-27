@@ -5,9 +5,10 @@ import { Experience } from "./../typings.d"
 
 type Props = {
   experiences: Experience[]
+  language: boolean
 }
 
-function WorkExperience({ experiences }: Props) {
+function WorkExperience({ experiences, language }: Props) {
   return (
     <motion.div
       initial={{
@@ -19,12 +20,21 @@ function WorkExperience({ experiences }: Props) {
       transition={{
         duration: 1.5,
       }}
-      className=" flex h-fit xl:h-[100%] relative top-20 overflow-hidden flex-col text-left max-w-full px-10 justify-evenly mx-auto items-center"
+      className=" flex flex-col overflow-hidden text-left max-w-full px-10 justify-between mx-auto items-center gap-y-16"
     >
+      <div className="flex items-center justify-center mt-16">
+        <h3 className=" uppercase tracking-[20px] text-gray-500 text-2xl">
+          {language ? "Experience" : "Experiência"}
+        </h3>
+      </div>
       <div className="w-full flex space-x-5 overflow-x-scroll px-10 pb-4 snap-x snap-mandatory scrollbar-track-gray-400/20 scrollbar-thumb-my-green/80 scrollbar-thin ">
         {experiences.map((experience) => {
           return (
-            <ExperienceCard key={experience?._id} experience={experience} />
+            <ExperienceCard
+              key={experience?._id}
+              experience={experience}
+              language={language}
+            />
           )
         })}
       </div>

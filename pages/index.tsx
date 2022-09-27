@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import type { GetStaticProps } from "next"
 import Head from "next/head"
 import Hero from "../components/Hero"
@@ -9,12 +10,22 @@ import Projects from "./../components/Projects"
 import ContactMe from "./../components/ContactMe"
 import Link from "next/link"
 import { ArrowUturnUpIcon } from "@heroicons/react/24/solid"
-import { Experience, PageInfo, Project, Skill, Social } from "../typings"
+import {
+  English,
+  Experience,
+  PageInfo,
+  Portugues,
+  Project,
+  Skill,
+  Social,
+} from "../typings"
 import { fetchPageInfo } from "./../utils/fetchPageInfo"
 import { fetchExperiences } from "./../utils/fetchExperience"
 import { fetchSkills } from "./../utils/fetchSkills"
 import { fetchProjects } from "./../utils/fetchProjects"
 import { fetchSocials } from "./../utils/fetchSocials"
+import { fetchPortugues } from "../utils/fetchEnglish copy"
+import { fetchEnglish } from "../utils/fetchEnglish"
 
 type Props = {
   pageInfo?: PageInfo
@@ -22,58 +33,64 @@ type Props = {
   skills: Skill[]
   projects: Project[]
   socials: Social[]
+  english: English
+  portugues: Portugues
 }
 
-const Home = ({ experiences, pageInfo, projects, skills, socials }: Props) => {
+const Home = ({ skills, socials, english, portugues }: Props) => {
+  const [language, setLanguage] = useState<boolean>(true)
+
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y  overflow-y-scroll overflow-x-hidden z-0 scrollbar-track-gray-400/20 scrollbar-thumb-my-green/80 scrollbar-thin">
       <Head>
         <title>Arthur Ribeiro - Portfólio</title>
       </Head>
 
-      <Header socials={socials} />
+      <Header socials={socials} language={setLanguage} />
 
       {/* Hero */}
       <section id="hero" className="snap-start">
-        <Hero pageInfo={pageInfo} />
+        <Hero
+          pageInfo={language ? english.pageInfos : portugues.pageInfos}
+          language={language}
+        />
       </section>
 
       {/* About */}
-      <section id="about" className="h-screen snap-start">
-        <div className="flex items-center justify-center">
-          <h3 className="relative top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
-            Sobre
-          </h3>
-        </div>
-        <About pageInfo={pageInfo} />
+      <section id="about">
+        <About
+          pageInfo={language ? english.pageInfos : portugues.pageInfos}
+          language={language}
+        />
       </section>
 
       {/* Experience */}
 
-      <section id="experience" className="h-screen snap-start">
-        <div className="flex items-center justify-center">
-          <h3 className="relative top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
-            Experiência
-          </h3>
-        </div>
-        <WorkExperience experiences={experiences} />
+      <section id="experience">
+        <WorkExperience
+          experiences={language ? english.experiences : portugues.experiences}
+          language={language}
+        />
       </section>
 
       {/* Skills */}
-      <section id="skills" className="h-screen snap-start">
-        <Skills skills={skills} />
+      <section id="skills">
+        <Skills skills={skills} language={language} />
       </section>
 
       {/* Projects */}
 
-      <section id="projects" className="h-screen snap-start">
-        <Projects projects={projects} />
+      <section id="projects">
+        <Projects
+          projects={language ? english.projects : portugues.projects}
+          languages={language}
+        />
       </section>
 
       {/* Contact Me */}
 
-      <section id="contact" className="h-screen snap-start">
-        <ContactMe />
+      <section id="contact">
+        <ContactMe language={language} />
       </section>
 
       <Link href="#hero">
@@ -93,6 +110,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills: Skill[] = await fetchSkills()
   const projects: Project[] = await fetchProjects()
   const socials: Social[] = await fetchSocials()
+  const portugues: Portugues = await fetchPortugues()
+  const english: English = await fetchEnglish()
 
   return {
     props: {
@@ -101,6 +120,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
       socials,
+      portugues,
+      english,
     },
     revalidate: 10,
   }

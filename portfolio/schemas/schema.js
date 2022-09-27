@@ -7,8 +7,18 @@ import project from "./project"
 import pageInfo from "./pageInfo"
 import experience from "./experience"
 import social from "./social"
+import pt from "./pt"
+import en from "./en"
 
 export default createSchema({
   name: "default",
-  types: schemaTypes.concat([pageInfo, experience, project, skill, social]),
+  types: schemaTypes.concat([
+    pageInfo,
+    experience,
+    project,
+    skill,
+    social,
+    en,
+    pt,
+  ]),
 })
