@@ -24,8 +24,8 @@ import { fetchExperiences } from "./../utils/fetchExperience"
 import { fetchSkills } from "./../utils/fetchSkills"
 import { fetchProjects } from "./../utils/fetchProjects"
 import { fetchSocials } from "./../utils/fetchSocials"
-import { fetchPortugues } from "../utils/fetchPortugues"
-import { fetchEnglish } from "../utils/fetchEnglish"
+// import { fetchPortugues } from "../utils/fetchPortugues"
+// import { fetchEnglish } from "../utils/fetchEnglish"
 
 type Props = {
   pageInfo?: PageInfo
@@ -33,11 +33,11 @@ type Props = {
   skills: Skill[]
   projects: Project[]
   socials: Social[]
-  english: English
-  portugues: Portugues
+  english?: English
+  portugues?: Portugues
 }
 
-const Home = ({ skills, socials, english, portugues }: Props) => {
+const Home = ({ skills, socials, pageInfo, experiences, projects }: Props) => {
   const [language, setLanguage] = useState<boolean>(true)
 
   return (
@@ -50,27 +50,18 @@ const Home = ({ skills, socials, english, portugues }: Props) => {
 
       {/* Hero */}
       <section id="hero" className="snap-start">
-        <Hero
-          pageInfo={language ? english.pageInfos : portugues.pageInfos}
-          language={language}
-        />
+        <Hero pageInfo={pageInfo} language={language} />
       </section>
 
       {/* About */}
       <section id="about">
-        <About
-          pageInfo={language ? english.pageInfos : portugues.pageInfos}
-          language={language}
-        />
+        <About pageInfo={pageInfo} language={language} />
       </section>
 
       {/* Experience */}
 
       <section id="experience">
-        <WorkExperience
-          experiences={language ? english.experiences : portugues.experiences}
-          language={language}
-        />
+        <WorkExperience experiences={experiences} language={language} />
       </section>
 
       {/* Skills */}
@@ -81,10 +72,7 @@ const Home = ({ skills, socials, english, portugues }: Props) => {
       {/* Projects */}
 
       <section id="projects">
-        <Projects
-          projects={language ? english.projects : portugues.projects}
-          languages={language}
-        />
+        <Projects projects={projects} languages={language} />
       </section>
 
       {/* Contact Me */}
@@ -110,8 +98,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills: Skill[] = await fetchSkills()
   const projects: Project[] = await fetchProjects()
   const socials: Social[] = await fetchSocials()
-  const portugues: Portugues = await fetchPortugues()
-  const english: English = await fetchEnglish()
+  // const portugues: Portugues = await fetchPortugues()
+  // const english: English = await fetchEnglish()
 
   return {
     props: {
@@ -120,8 +108,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
       socials,
-      portugues,
-      english,
+      // portugues,
+      // english,
     },
     revalidate: 10,
   }
