@@ -6,7 +6,7 @@ export const fetchPortugues = async () => {
   )
 
   const data = await res.json()
-  const pt: Portugues = data.pt
+  const pt: Portugues = data.portugues
 
   return pt
 }
