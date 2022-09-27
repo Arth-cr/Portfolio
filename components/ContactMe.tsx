@@ -83,13 +83,13 @@ const ContactMe = ({ language }: Props) => {
             <div className="flex space-x-2">
               <input
                 {...register("name")}
-                placeholder={`${language ? "Name" : "Nome"}`}
+                placeholder={language ? "Name" : "Nome"}
                 className="contactInput"
                 type="text"
               />
               <input
                 {...register("subject")}
-                placeholder={`${language ? "Subject" : "Assunto"}`}
+                placeholder={language ? "Subject" : "Assunto"}
                 className="contactInput"
                 type="text"
               />
@@ -104,7 +104,7 @@ const ContactMe = ({ language }: Props) => {
 
             <textarea
               {...register("message")}
-              placeholder={`${language ? "Message" : "Mensagem"}`}
+              placeholder={language ? "Message" : "Mensagem"}
               className="contactInput"
             />
 
@@ -112,7 +112,7 @@ const ContactMe = ({ language }: Props) => {
               type="submit"
               className="bg-my-green py-5 px-10 rounded-md text-black font-bold text-lg hover:opacity-50 transition-opacity duration-200"
             >
-              {`${language ? "Submit" : "Enviar"}`}
+              {language ? "Submit" : "Enviar"}
             </button>
           </form>
         </div>

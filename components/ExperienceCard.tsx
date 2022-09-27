@@ -5,11 +5,10 @@ import { urlFor } from "./../sanity"
 
 type Props = {
   experience: Experience
-  language
+  language: boolean
 }
 
 const ExperienceCard = ({ experience, language }: Props) => {
-  console.log({ experience }, "asoeijaoisej")
   return (
     <article className="flex flex-col rounded-lg items-center space-y-7 flex-shkink-0 min-w-[350px] md:min-w-[500px] xl:min-w-[700px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200">
       <motion.img
