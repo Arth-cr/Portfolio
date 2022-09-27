@@ -24,7 +24,7 @@ import { fetchExperiences } from "./../utils/fetchExperience"
 import { fetchSkills } from "./../utils/fetchSkills"
 import { fetchProjects } from "./../utils/fetchProjects"
 import { fetchSocials } from "./../utils/fetchSocials"
-import { fetchPortugues } from "../utils/fetchEnglish copy"
+import { fetchPortugues } from "../utils/fetchPortugues"
 import { fetchEnglish } from "../utils/fetchEnglish"
 
 type Props = {
