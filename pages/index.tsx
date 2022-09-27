@@ -41,7 +41,7 @@ const Home = ({ skills, socials, english, portugues }: Props) => {
   const [language, setLanguage] = useState<boolean>(true)
 
   return (
-    <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y  overflow-y-scroll overflow-x-hidden z-0 scrollbar-track-gray-400/20 scrollbar-thumb-my-green/80 scrollbar-thin">
+    <div className="bg-[rgb(36,36,36)] text-white h-screen overflow-y-scroll overflow-x-hidden z-0 scrollbar-track-gray-400/20 scrollbar-thumb-my-green/80 scrollbar-thin">
       <Head>
         <title>Arthur Ribeiro - Portfólio</title>
       </Head>
@@ -49,7 +49,7 @@ const Home = ({ skills, socials, english, portugues }: Props) => {
       <Header socials={socials} language={setLanguage} />
 
       {/* Hero */}
-      <section id="hero" className="snap-start">
+      <section id="hero">
         <Hero
           pageInfo={language ? english.pageInfos : portugues.pageInfos}
           language={language}
