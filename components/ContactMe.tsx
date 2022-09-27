@@ -50,7 +50,7 @@ const ContactMe = ({ language }: Props) => {
             <>
               Did you find it interesting?{" "}
               <span className="decoration-my-green underline">
-                Let's talk!!
+                Let&apos;s talk!!
               </span>
             </>
           ) : (
