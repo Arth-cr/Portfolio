@@ -27,7 +27,7 @@ function WorkExperience({ experiences, language }: Props) {
           {language ? "Experience" : "Experiência"}
         </h3>
       </div>
-      <div className="w-full flex space-x-5 overflow-x-scroll px-10 pb-4 snap-x snap-mandatory scrollbar-track-gray-400/20 scrollbar-thumb-my-green/80 scrollbar-thin ">
+      <div className="w-full flex md:pb-14 space-x-5 overflow-x-scroll px-10 pb-4 snap-x snap-mandatory scrollbar-track-gray-400/20 scrollbar-thumb-my-green/80 scrollbar-thin ">
         {experiences.map((experience) => {
           return (
             <ExperienceCard
